@@ -19,6 +19,7 @@ public class Selection {
         System.out.print("Input Final Score:");
         int examScore = scan.nextInt();
         System.out.println("============================");
+        
         if (assignment < 0 || assignment > 100 ||
             quiz < 0 || quiz > 100 ||
             mideterm < 0 || mideterm > 100 ||
@@ -26,9 +27,8 @@ public class Selection {
             System.out.println("Invalid value.");
         } else {
             double finalScore= (0.2 * assignment) + (0.2 * quiz) + (0.3 * mideterm) + (0.3 * examScore);
-            System.out.println("Final Score :" + finalScore);
 
-            if (finalScore > 80 && finalScore <= 100) {
+        if (finalScore > 80 && finalScore <= 100) {
             score = "A";
         } else if (finalScore > 73 && finalScore <= 80) {
             score = "B+";
@@ -43,6 +43,10 @@ public class Selection {
         } else if (finalScore <= 39) {
             score = "E";
         }
+
+        System.out.println("Final Score :" + finalScore);
+        System.out.println("Score Grade :" + score);
+        
         System.out.println("============================");
         if (score == "D" || score == "E") {
             System.out.println("Sorry, You Failed");
