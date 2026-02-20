@@ -1,10 +1,20 @@
-package Jobsheet2;
+package Jobsheet2.Student;
 
 public class Student22 {
     String Name;
     String NIM;
     String Class;
     double IPK;
+
+    public Student22() {
+    }
+
+    public Student22(String nm, String nim, double ipk, String kls) {
+        Name = nm;
+        this.NIM = nim;
+        this.IPK = ipk;
+        Class = kls;
+    }
 
     void showInformation() {
         System.out.println("Name : " + Name);
@@ -36,4 +46,5 @@ public class Student22 {
             return "Needs Improvement";
         }
     }
+
 }
