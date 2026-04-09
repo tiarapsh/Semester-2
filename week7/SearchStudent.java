@@ -35,6 +35,33 @@ public class SearchStudent {
             System.out.println("Data " + x + " is not found");
         }
     }
+
+    public int FindBinarySearch(int cari, int left, int right){
+        int mid;
+        if(right >= left){
+            mid = (left + right) / 2;
+            if(cari == listStd[mid].nim){
+                return mid;
+            } else if(listStd[mid].nim > cari){
+                return FindBinarySearch(cari, left, mid - 1);
+            } else {
+                return FindBinarySearch(cari, mid + 1, right);
+            }
+        }
+        return -1;
+    }
+
+    public void sort(){
+    for(int i = 0; i < listStd.length - 1; i++){
+        for(int j = 0; j < listStd.length - i - 1; j++){
+            if(listStd[j].nim > listStd[j+1].nim){
+                Student temp = listStd[j];
+                listStd[j] = listStd[j+1];
+                listStd[j+1] = temp;
+            }
+        }
+    }
+}
     public void showData(int x, int pos){
         if(pos != -1){
             System.out.println("NIM: " + listStd[pos].nim);
