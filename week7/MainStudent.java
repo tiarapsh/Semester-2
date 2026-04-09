@@ -7,8 +7,10 @@ public class MainStudent {
         Scanner s = new Scanner(System.in);
         Scanner s1 = new Scanner(System.in);
 
-        SearchStudent data = new SearchStudent();
-        int amountStudent = 5;
+        System.out.print("Input number of students: ");
+        int amountStudent = s.nextInt();
+
+        SearchStudent data = new SearchStudent(amountStudent);
 
         System.out.println("-----------------------------");
         System.out.println("Input student data accordingly from smallest NIM");

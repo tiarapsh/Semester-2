@@ -1,8 +1,12 @@
 package week7;
 
 public class SearchStudent {
-    Student[] listStd = new Student[5];
+    Student[] listStd;
     int idx;
+
+    public SearchStudent(int size){
+    listStd = new Student[size];
+}
 
     public void add(Student std) {
         if (idx < listStd.length) {
