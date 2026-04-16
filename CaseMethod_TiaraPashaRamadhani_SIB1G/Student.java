@@ -10,7 +10,6 @@ public class Student {
         this.name = name;
         this.study_program = study_program;
     }
-
     public void print() {
         System.out.println(
             "NIM: " + nim + " | " +

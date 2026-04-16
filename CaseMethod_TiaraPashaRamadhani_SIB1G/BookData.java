@@ -1,7 +1,7 @@
 package CaseMethod_TiaraPashaRamadhani_SIB1G;
 
 public class BookData {
-    Book [] listBook;
+    Book [] listBook; 
     int idx;
     
     public void add(Book book) {

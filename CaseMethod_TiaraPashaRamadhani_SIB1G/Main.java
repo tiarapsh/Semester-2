@@ -69,11 +69,12 @@ public class Main {
                     bookLendingData.sortFine();
                     System.out.println("Sorted by fines:");
                     bookLendingData.print();
+                    bookLendingData.count();
                     break;
                 case 5:
                     System.out.print("Enter Student ID to search: ");
                     String studentId = scan.next();
-                    bookLendingData.sortStudent();
+                    bookLendingData.sortStudent();   
                     int book = bookLendingData.FindBinarySearch(studentId, 0, bookLendingData.idx - 1);
                     bookLendingData.showData(studentId, book);
                     break;

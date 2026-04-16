@@ -7,6 +7,7 @@ public class BookLending {
     int loanLimit;
     int overdue;
     int fine;
+    int idx;
 
     public BookLending() {
     }
@@ -26,6 +27,7 @@ public class BookLending {
             overdue = 0;
             fine = 0;
         }
+        
     }
 
     public void printLending() {
