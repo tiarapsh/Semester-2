@@ -17,7 +17,7 @@ public class conversionStack22 {
     }
 
     public void push(int data) {
-        if (!isFull()) {
+        if (isFull()) {
             System.out.println("Stack is full!");
         } else {
             top++;
