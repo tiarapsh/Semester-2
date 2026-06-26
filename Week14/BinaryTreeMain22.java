@@ -62,5 +62,4 @@ public class BinaryTreeMain22 {
         bst.traverseInOrder(bst.root);
 
     }
-
 }

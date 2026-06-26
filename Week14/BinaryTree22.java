@@ -98,6 +98,7 @@ public class BinaryTree22 {
         return successor;
     }
 
+    //delete
     public void delete(double ipk) {
 
         if (isEmpty()) {
