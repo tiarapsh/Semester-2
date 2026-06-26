@@ -1,6 +1,7 @@
 package PraktikumUAS_TiaraPashaRamadhani_SIB1G;
 
 public class Tax {
+    //inisiasi variabel
     static int counter = 1;
     int code;
     int nominal;
@@ -10,14 +11,19 @@ public class Tax {
 
     Tax prev;
     Tax next;
-
+    // ini juga constructor 
     public Tax(Vehicle vehicle, int monthPay) {
         this.code = counter++;
         this.vehicle = vehicle;
         this.monthPay = monthPay;
         calculateTax();
+        calculateFine();
     }
 
+    public int getTotal() {
+    return nominal + fine;
+}
+    //untuk menghitung tax nya
     public void calculateTax() {
         if (vehicle.type == 2) {
             if (vehicle.cc < 100)
@@ -36,6 +42,7 @@ public class Tax {
         }
     }
 
+    //untuk menghitung denda nya
     public void calculateFine() {
         int lateMonth = monthPay - vehicle.monthMustPay;
         if (lateMonth > 0){

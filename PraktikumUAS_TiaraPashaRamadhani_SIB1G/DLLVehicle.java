@@ -1,11 +1,15 @@
 package PraktikumUAS_TiaraPashaRamadhani_SIB1G;
 
 public class DLLVehicle {
-    NodeVehicle head, tail;
+    Node.NodeDLLVehicle head;
+    Node.NodeDLLVehicle tail;
 
-    public void addLast(Vehicle vehicle){
-        NodeVehicle newNode = new NodeVehicle(vehicle);
-        if (head == null){
+    //menambah data kendaraan di akhir 
+    public void addLast(Vehicle data) {
+
+        Node.NodeDLLVehicle newNode = new Node.NodeDLLVehicle(data);
+
+        if (head == null) {
             head = tail = newNode;
         } else {
             tail.next = newNode;
@@ -14,24 +18,45 @@ public class DLLVehicle {
         }
     }
 
-    public Vehicle findTNKB(String tnkb){
-        NodeVehicle current = head;
-        while (current != null){
-            if ( current.data.tnkb.equalsIgnoreCase(tnkb)){
+// untuk mencari kendaraan dari tnkb
+    public Vehicle findVehicle(String tnkb) {
+
+        Node.NodeDLLVehicle current = head;
+
+        while (current != null) {
+
+            if (current.data.tnkb.equalsIgnoreCase(tnkb)) {
                 return current.data;
             }
+
             current = current.next;
         }
+
         return null;
     }
 
-    public void display(){
-        System.out.println("=== Register Vehicle === ");
-        System.out.println("TNKB\tName\tType\tCC\tYear\tMonth Must Pay");
-        NodeVehicle current = head;
-        while (current !=null){
-            Vehicle vehicle = current.data;
-            System.out.println(vehicle.tnkb + "\t" + vehicle.name + "\t" + vehicle.type + "\t" + vehicle.cc + "\t" + vehicle.year + "\t" + vehicle.monthMustPay);
+    // menampilkan kendaraan 
+    public void displayVehicle() {
+
+        Node.NodeDLLVehicle current = head;
+
+        System.out.println("=================================================================");
+        System.out.printf("%-10s %-15s %-5s %-6s %-6s %-10s%n",
+                "TNKB", "Name", "Type", "CC", "Year", "MustPay");
+        System.out.println("=================================================================");
+
+        while (current != null) {
+
+            Vehicle v = current.data;
+
+            System.out.printf("%-10s %-15s %-5d %-6d %-6d %-10d%n",
+                    v.tnkb,
+                    v.name,
+                    v.type,
+                    v.cc,
+                    v.year,
+                    v.monthMustPay);
+
             current = current.next;
         }
     }

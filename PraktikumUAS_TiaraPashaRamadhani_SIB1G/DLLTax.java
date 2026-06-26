@@ -1,11 +1,14 @@
 package PraktikumUAS_TiaraPashaRamadhani_SIB1G;
 
 public class DLLTax {
-    NodeTax head, tail;
+    Node.NodeDLLTax head;
+    Node.NodeDLLTax tail;
 
-    public void addLast(Tax tax){
-        NodeTax newNode = new NodeTax(tax);
-        if (head == null){
+    //menambah data kendaraan di akhir 
+    public void addLast(Tax data) {
+
+        Node.NodeDLLTax newNode = new Node.NodeDLLTax(data);
+        if (head == null) {
             head = tail = newNode;
         } else {
             tail.next = newNode;
@@ -14,44 +17,90 @@ public class DLLTax {
         }
     }
 
-    public void dailyTransactions(){
-        if (head == null){
-            System.out.println("No transactions");
-            return;
-        }
-        System.out.println("=== Tax Payment ====");
-        System.out.println("Code\tTNKB\tName\tType\tCC\tYear\tMonth Must Pay\tMonth Pay\tNominal\tFine");
-        int totalNominal = 0;
-        NodeTax current = head;
-        while (current != null){
-            Tax tax = current.data;
-            int totalPay = tax.nominal + tax.fine;
-            totalNominal += totalPay;
-            System.out.println(tax.code + "\t" + tax.vehicle.tnkb + "\t" + tax.vehicle.name + "\t" + tax.vehicle.type + "\t" + tax.vehicle.cc + "\t" + tax.vehicle.year + "\t" + tax.vehicle.monthMustPay + "\t" + tax.monthPay + "\t" + tax.nominal + "\t" + tax.fine);
+    //untuk total income semuanya
+    public int getTotalIncome() {
+
+        int total = 0;
+
+        Node.NodeDLLTax current = head;
+
+        while (current != null) {
+            total += current.data.getTotal();
             current = current.next;
         }
-        System.out.println("================================================================================");
-        System.out.println("Total Income: Rp. "+totalNominal);
+
+        return total;
     }
 
-    // public void sortName(){
-    //     if (head == null || head.next == null)
-    //         return;
+    //menampilkan
+    public void displayTransaction() {
 
-    //     boolean swap;
-    //     do {
-    //         swap = false; 
-    //         NodeTax current = head;
-    //         while (current.next != null){
-    //             if (current.data.vehicle.name.compareToIgnoreCase(current.next.data.vehicle.name) > 0){
-    //                 Tax temp = current.data;
-    //                 current.data = current.next.data;
-    //                 current.next.data = temp;
-    //                 swap = true;
-    //             }
-    //             current = current.next;
-    //         } 
-    //     } while (swap);
-    //     System.out.println("Transaction successfully sorted by name");
-    // }
+        if (head == null) {
+            System.out.println("No transaction data.");
+            return;
+        }
+
+        Node.NodeDLLTax current = head;
+
+        System.out.println("================================================================================");
+        System.out.printf("%-5s %-10s %-15s %-10s %-10s %-10s%n",
+                "Code", "TNKB", "Name", "Tax", "Fine", "Total");
+        System.out.println("================================================================================");
+
+        while (current != null) {
+
+            Tax t = current.data;
+
+            System.out.printf("%-5d %-10s %-15s %-10d %-10d %-10d%n",
+                    t.code,
+                    t.vehicle.tnkb,
+                    t.vehicle.name,
+                    t.nominal,
+                    t.fine,
+                    t.getTotal());
+
+            current = current.next;
+        }
+    }
+
+    public Tax payTax(DLLVehicle vehicleList,
+            String tnkb,
+            int monthPay) {
+
+        Vehicle vehicle = vehicleList.findVehicle(tnkb);
+
+        if (vehicle == null) {
+            return null;
+        }
+
+        Tax tax = new Tax(vehicle, monthPay);
+
+        addLast(tax);
+
+        return tax;
+    }
+
+    public void sortTransaction() {
+
+    if (head == null) {
+        System.out.println("No transaction data.");
+        return;
+    }
+
+    BSTTax bst = new BSTTax();
+
+    Node.NodeDLLTax current = head;
+
+    while (current != null) {
+        bst.add(current.data);
+        current = current.next;
+    }
+
+    System.out.println("=================================================");
+    System.out.printf("%-5s %-10s %-15s %-10s%n",
+            "Code", "TNKB", "Name", "Total");
+    System.out.println("=================================================");
+
+    bst.inorder(bst.root);
+}
 }
