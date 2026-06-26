@@ -88,15 +88,15 @@ public class Main {
     static void initializeVehicle() {
 
         vehicleList.addLast(
-                new Vehicle("N1234AB", "Tiara", 2, 125, 2021, 5));
+                new Vehicle("N1234AB", "Scoppy", 2, 125, 2021, 5));
 
         vehicleList.addLast(
-                new Vehicle("N5678CD", "Budi", 2, 300, 2020, 7));
+                new Vehicle("N5678CD", "Vario", 2, 300, 2020, 7));
 
         vehicleList.addLast(
-                new Vehicle("N1111EF", "Andi", 4, 1500, 2019, 3));
+                new Vehicle("N1111EF", "Inova", 4, 1500, 2019, 3));
 
         vehicleList.addLast(
-                new Vehicle("N2222GH", "Siti", 4, 3000, 2022, 8));
+                new Vehicle("N2222GH", "BMW", 4, 3000, 2022, 8));
     }
 }
